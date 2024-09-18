@@ -101,7 +101,7 @@ public class App {
                     }
                 }
                 System.out.println("-------------------------------------------------------------");
-                
+
             } else if (opcao == 3) {
                 System.out.println("Informações da cafeteira:");
                 System.out.println("\tÓtima cafeteira");
