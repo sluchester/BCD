@@ -7,6 +7,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.lang.reflect.InaccessibleObjectException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -46,6 +47,20 @@ public class App {
         return linhas;
     }
 
+    //
+    //TODO public static que retorne uma lista<string> com as novas informacoes acrescidas
+
+    public static String[] adicionaUsuario(){
+        System.out.println("Para adicionar um novo usuário siga os passos abaixo!");
+        System.out.println("Digite o número de ID do usuário, seu nome completo e o email, TUDO SEPARADO POR VÍRGULA como no exemplo:");
+        System.out.println("EXEMPLO: 6875,Angel Drakharis,adrakharis@gmail.com");
+
+        Scanner scanner = new Scanner(System.in);
+        String linhaLida = scanner.nextLine();
+
+        return linhaLida.split(",");
+    }
+
     public static void main(String[] args) {
         System.out.println("Cafeteira System");
 
@@ -79,7 +94,6 @@ public class App {
                         System.out.println("Usuário: " + linha.get(0));
                         System.out.println("Nome: " + linha.get(1));
                         System.out.println("Email: " + linha.get(2));
-
                     }
                 }
 
@@ -100,13 +114,24 @@ public class App {
                 for(ArrayList<String> linha : linhas){
                     System.out.println("Cafés totais: " + linha.get(0));
                     System.out.println("Cafés já consumidos: " + linha.get(1));
-                }  
+                }
 
             } else if (opcao == 4) {
                 System.out.println("Adicionando novo usuário:");
                 System.out.print("Entre com o id do usuário: ");
                 id = in.nextInt();
-                System.out.println("\tUsuário de id " + id + " adicionado");
+
+                try{
+                    ArrayList<ArrayList<String>> linhasOriginal = le("/home/aluno/BCD/aula1/cafeteira.csv");
+                    //ler informações que compõem um usuário
+                    //adicionar numa nova lista
+                    //adicionar esta nova lista a lista total
+                    //escrever essa nova lista de lista no arquivo csv
+                    System.out.println("\tUsuário de id " + id + " adicionado");
+                } catch(Exception e){
+                    System.err.println("Erro ao adicionar ou excluir dado");
+                }
+
             } else if (opcao == 5) {
                 System.out.println("Removendo usuário:");
                 System.out.print("Entre com o id do usuário: ");
