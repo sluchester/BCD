@@ -13,10 +13,6 @@ import java.util.List;
 import java.util.Scanner;
 
 public class App {
-
-    // List<List<String>> linhas = new ArrayList<>();
-    // linhas.add(Arrays.asList("123", "juca", "j@email"));
-    // escreve(linhas, "usuarios.csv");
     public static void escreve(List<List<String>> linhas, String filename) {
         try {
             FileWriter arquivo = new FileWriter(filename, true);
@@ -32,7 +28,6 @@ public class App {
         }
     }
 
-    // ArrayList<ArrayList<String>> linhas = le(usuarios.csv);
     public static ArrayList<ArrayList<String>> le(String pathname) {
         ArrayList<ArrayList<String>> linhas = new ArrayList<ArrayList<String>>(0);
         try {
@@ -62,7 +57,7 @@ public class App {
         Scanner in = new Scanner(System.in);
 
         while (continua) {
-            System.out.println("================");
+            System.out.println("=========================================");
             System.out.println("Digite 1: Para informações de usuário");
             System.out.println("Digite 2: Para histórico de cafés");
             System.out.println("Digite 3: Para informações da cafeteira");
@@ -87,7 +82,6 @@ public class App {
 
                     }
                 }
-                System.out.println("-------------------------------------------------------------");
 
             } else if (opcao == 2) {
                 System.out.print("Entre com o id do usuário: ");
@@ -100,11 +94,14 @@ public class App {
                         System.out.println("Timestamp: " + linha.get(2));
                     }
                 }
-                System.out.println("-------------------------------------------------------------");
 
             } else if (opcao == 3) {
-                System.out.println("Informações da cafeteira:");
-                System.out.println("\tÓtima cafeteira");
+                ArrayList<ArrayList<String>> linhas = le("/home/aluno/BCD/aula1/cafeteira.csv");
+                for(ArrayList<String> linha : linhas){
+                    System.out.println("Cafés totais: " + linha.get(0));
+                    System.out.println("Cafés já consumidos: " + linha.get(1));
+                }  
+
             } else if (opcao == 4) {
                 System.out.println("Adicionando novo usuário:");
                 System.out.print("Entre com o id do usuário: ");
