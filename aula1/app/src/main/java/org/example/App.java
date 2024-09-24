@@ -47,8 +47,16 @@ public class App {
         return linhas;
     }
 
-    //
     //TODO public static que retorne uma lista<string> com as novas informacoes acrescidas
+    public static ArrayList<String> usuarioAcrescentado(){
+        ArrayList<String> lista = new ArrayList<>();
+        String[] infosToFormat = adicionaUsuario();
+
+        for (int i = 0; i < infosToFormat.length; i++) {
+            lista.add(infosToFormat[i]);
+        }
+        return lista;
+    }
 
     public static String[] adicionaUsuario(){
         System.out.println("Para adicionar um novo usuário siga os passos abaixo!");
@@ -88,7 +96,8 @@ public class App {
                 System.out.print("Entre com o id do usuário: ");
                 id = in.nextInt();
                 //System.out.println("\tId " + id + " selecionado para informações de usuário");
-                ArrayList<ArrayList<String>>  linhas = le("/home/aluno/BCD/aula1/usuarios.csv");
+                //ArrayList<ArrayList<String>>  linhas = le("/home/aluno/BCD/aula1/usuarios.csv");
+                ArrayList<ArrayList<String>>  linhas = le("C:\ Users\ luanb\ BCD\ aula1\ usuarios.csv");
                 for(ArrayList<String> linha : linhas) {
                     if(linha.get(0).equals(String.valueOf(id))){
                         System.out.println("Usuário: " + linha.get(0));
@@ -100,7 +109,7 @@ public class App {
             } else if (opcao == 2) {
                 System.out.print("Entre com o id do usuário: ");
                 id = in.nextInt();
-                ArrayList<ArrayList<String>> linhas = le("/home/aluno/BCD/aula1/consumo.csv");
+                ArrayList<ArrayList<String>> linhas = le("C:\Users\luanb\BCD\aula1\consumo.csv");
                 for (ArrayList<String> linha : linhas){
                     if(linha.get(0).equals(String.valueOf(id))){
                         System.out.println("Usuário: " + linha.get(0));
@@ -110,7 +119,7 @@ public class App {
                 }
 
             } else if (opcao == 3) {
-                ArrayList<ArrayList<String>> linhas = le("/home/aluno/BCD/aula1/cafeteira.csv");
+                ArrayList<ArrayList<String>> linhas = le("C:\Users\luanb\BCD\aula1\cafeteira.csv");
                 for(ArrayList<String> linha : linhas){
                     System.out.println("Cafés totais: " + linha.get(0));
                     System.out.println("Cafés já consumidos: " + linha.get(1));
@@ -122,10 +131,12 @@ public class App {
                 id = in.nextInt();
 
                 try{
-                    ArrayList<ArrayList<String>> linhasOriginal = le("/home/aluno/BCD/aula1/cafeteira.csv");
+                    ArrayList<ArrayList<String>> linhasOriginal = le("C:\Users\luanb\BCD\aula1\cafeteira.csv");
                     //ler informações que compõem um usuário
                     //adicionar numa nova lista
+                    linhasOriginal.add(usuarioAcrescentado());
                     //adicionar esta nova lista a lista total
+                    escreve(linhasOriginal, "C:\Users\luanb\BCD\aula1\cafeteira.csv");
                     //escrever essa nova lista de lista no arquivo csv
                     System.out.println("\tUsuário de id " + id + " adicionado");
                 } catch(Exception e){
@@ -136,6 +147,12 @@ public class App {
                 System.out.println("Removendo usuário:");
                 System.out.print("Entre com o id do usuário: ");
                 id = in.nextInt();
+                in.nextLine();
+                //ler a planilha de usuarios
+                //fazer uma copia da base original
+                //achar o id do usuario na lista e remover
+                //escrever a nova base no arquivo
+
                 System.out.println("\tUsuário de " + id + " removido");
             } else if (opcao == 6) {
                 System.out.println("Servindo café:");
