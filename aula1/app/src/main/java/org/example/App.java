@@ -173,7 +173,6 @@ public class App {
 
                 //verifica se cafeteira tem café suficiente para servir a dose desejada
                 //se sim, escreve as informações do usuário na tabela consumo
-                 // le a tabela consumo
                 //se não, imprime uma mensagem dizendo que a cafeteira está vazia
 
                 System.out.println("\tId " + id + " servindo café tipo " + tipo);
